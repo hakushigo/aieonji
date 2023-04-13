@@ -53,6 +53,10 @@ class NoteController extends Controller
     public function ShowNote(Request $request, $id){
         $noteData = Notes::find($id);
 
+        if($noteData->NoteStatus == 'inactive'){
+            return redirect(route('homepage'));
+        }
+
         if($noteData->password == null){
             return view('.notes.view', [
                 'subject' => $noteData->subject,
@@ -70,7 +74,11 @@ class NoteController extends Controller
     }
 
     public function ShowProtectedNote(Request $request, $id){
-        $noteData = Notes::find($id)->first();
+        $noteData = Notes::find($id);
+
+        if($noteData->NoteStatus == 'inactive'){
+            return redirect(route('homepage'));
+        }
 
         if(hash('md5', $request->notepassword ) == $noteData->password){
             return view('.notes.view', [
@@ -97,8 +105,35 @@ class NoteController extends Controller
         return redirect(route('homepage'));
     }
 
-    // to update the notes
-    public function UpdateNote(Request $request, $id){
 
+    public function ShowDisablePage(){
+        return view('.notes.disable');
+    }
+
+    public function DisableNote(Request $request){
+        $note = Notes::find($request->id);
+
+        if($note->authorkey == hash('md5', $request->authorkey)){
+            $note->NoteStatus = 'inactive';
+            $note->save();
+            echo 'success!';
+        }
+    }
+
+    // to update the notes
+    public function ShowEditPage(){
+        return view('.notes.edit');
+    }
+
+    public function EditNote(Request $request)
+    {
+        $note = Notes::find($request->id);
+
+        if ($note->authorkey == hash('md5', $request->authorkey)) {
+            $note->update([
+                'subject' => $request->subject,
+                'content' => $request->notecontent,
+            ]);
+        }
     }
 }

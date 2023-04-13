@@ -28,3 +28,9 @@ Route::post('/notes/protected/read/{id}', [\App\Http\Controllers\NoteController:
 
 Route::get('/delete', [\App\Http\Controllers\NoteController::class, 'DeleteNote'])->name('delete');
 Route::post('/notes/delete', [\App\Http\Controllers\NoteController::class, 'DropNote'])->name('dropnote');
+Route::get('/disable', [\App\Http\Controllers\NoteController::class, 'ShowDisablePage'])->name('disable');
+
+Route::post('/notes/disable', [\App\Http\Controllers\NoteController::class, 'DisableNote'])->name('disablenote');
+
+Route::get('/edit', [\App\Http\Controllers\NoteController::class, 'ShowEditPage'])->name('edit');
+Route::post('/notes/update', [\App\Http\Controllers\NoteController::class, 'EditNote'])->name('editnote');

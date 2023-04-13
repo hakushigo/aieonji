@@ -43,11 +43,11 @@
 
                 <i>or</i>
 
-                <a href="#">disable!</a>
+                <a href="{{ route('disable') }}">disable!</a>
 
                 <i>or</i>
 
-                <a href="#">edit!</a>
+                <a href="{{ route('edit') }}">edit!</a>
 
                 <span>a letter</span>
             </p>
