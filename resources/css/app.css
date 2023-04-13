@@ -1,0 +1,44 @@
+body{
+    font-family: 'Pangolin', cursive;
+    margin: 0;
+    padding: 0;
+}
+.logoimage{
+    height : 70px;
+    width: auto;
+    position: relative;
+    bottom: -24px;
+    left: -5px;
+}
+.body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content{
+    text-align: center;
+}
+h1,h2,h3,h4,h5,h6,p{
+    margin: 10px 0!important;
+}
+hr{
+    margin: 20px 0;
+    border: .1px solid black;
+}
+.rowimg{
+    height: 100px;
+}
+.row{
+    display: flex;
+    margin: 50px 0px;
+    flex-direction: row;
+}
+.rowsec{
+    padding: 0px 30px;
+    width: 100px;
+}
+a{
+    color: black;
+}
+
